@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Sans+Pro&display=swap');
+
+:root {
+    --bg-color: hsl(49 37% 94%);
+    --animspeed: 6s;
+}
+
+body {
+    font-family: "Source Sans Pro", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--bg-color);
+}
+
+h1 {
+    font-size: clamp(1rem, 3vw + 1rem, 3rem);
+    font-family: "Source Code Pro", monospace;
+    position: relative;
+    width: max-content;
+}
+
+h1::before,
+h1::after {
+    content: '';
+    position: absolute;
+    padding-bottom: 1.2em;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+h1::before {
+    background: var(--bg-color);
+    animation: 
+    texteanim var(--animspeed) steps(25) 1s forwards;
+}
+
+h1::after {
+    width: .125em;
+    background: #000;
+    animation: 
+    texteanim var(--animspeed) steps(25) 1s forwards,
+    blink 750ms steps(25) infinite;
+}
+
+.soustitre {
+    margin-top: 3em;
+    color: hsl(0 0% 0% / 0.7);
+    font-size: 2rem;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(3rem);
+    animation: effacement 2s ease calc(var(--animspeed) + 2s) forwards;
+}
+
+@keyframes texteanim {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
+
+@keyframes effacement {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
